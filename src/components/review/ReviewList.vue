@@ -34,10 +34,11 @@ const reviewList = computed(() => store.getters.getReview.reviewList);
 const reviewList2 = computed(() => store.getters.getReviewList);
 const showed = computed(() => store.getters.getShowed);
 
-const showMeMore = () => {
+const showMeMore = async () => {
   if (!showed.value) {
     if (reviewList2.value.length === 0) {
-      store.dispatch("setReview", { goodsId: goodsId, offset: 3 });
+      await store.dispatch("setReview", { goodsId: goodsId, offset: 3 });
+      store.commit("changeShowed", true);
     } else {
       store.commit("changeShowed", true);
     }
