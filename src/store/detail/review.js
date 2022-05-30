@@ -30,6 +30,7 @@ export default {
       }
       const arr = state.allReviewList.filter(review => review.rating === rating);
       
+      state.reviews.reviewCount = arr.length;
       if(arr.length >3){
         state.reviews.reviewList = arr.slice(0,3);
         state.reviewList = arr.slice(3);
